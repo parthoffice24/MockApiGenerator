@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class EndpointFileManager {
-    private List<Endpoints> endpoint = new ArrayList<>();
+	private List<Endpoints> endpoint = new ArrayList<>();
     private final ObjectMapper objectMapper = new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT);
     private final File file = new File(System.getProperty("user.home")+File.separator + "Downloads"+File.separator+"mockapi.json");
 

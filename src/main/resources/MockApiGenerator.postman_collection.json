@@ -1,41 +1,51 @@
 {
 	"info": {
-		"_postman_id": "746f37af-fbe9-4816-aedf-3dbec0d4e07d",
-		"name": "MockApiGenerator",
+		"_postman_id": "5f09a7de-001b-436e-9309-97d0bffcb583",
+		"name": "MockAPiGenerator",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "34361951"
 	},
 	"item": [
 		{
-			"name": "Set Endpoints",
+			"name": "Show Endpoints",
 			"request": {
-				"method": "POST",
+				"method": "GET",
 				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"path\":\"/postParties\",\r\n    \"payload\":\"\",\r\n    \"response\": \"\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
 				"url": {
-					"raw": "http://localhost:9001/configure",
+					"raw": "http://localhost:9009/endpoints",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "9001",
+					"port": "9009",
 					"path": [
-						"configure"
+						"endpoints"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "Check Endpoint",
+			"name": "Refresh Folder",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9009/loadfile",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9009",
+					"path": [
+						"loadfile"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Refresh Folder Copy",
 			"request": {
 				"method": "POST",
 				"header": [],
@@ -49,46 +59,17 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:9001/clara-bff/postParties",
+					"raw": "http://localhost:9009/clara-bff/xyz/abc/agentLogin",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "9001",
+					"port": "9009",
 					"path": [
 						"clara-bff",
-						"postParties"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Check Endpoint Copy",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"method": "GET",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"uiIdleSessionTimeout\": 1800,\r\n    \"shoppingBasketFeatureToggle\": true,\r\n    \"accountDisplayToggle\": true,\r\n    \"adobeContainerScript\": \"launch-c050be79183e-staging.min.js\",\r\n    \"agentDataDomainScript\": \"c604d834-0c3d-442f-bd1c-cdde0906c842-test\",\r\n    \"agentPortalDomain\": \"https://clara-agent.uat.aws.emagin.eu\",\r\n    \"allowedLiveChatSessionHistoryHoursSpan\": 48,\r\n    \"claimDraftCreationEnabled\": true,\r\n    \"customerDomain\": \"https://clara.uat.aws.emagin.eu\",\r\n    \"dataDomainScript\": \"e3c8e4b0-80ae-4160-af1d-97f6d94c635d-test\",\r\n    \"dataLayer\": \"GTM-N6X9BSP\",\r\n    \"enableImpersonate\": true,\r\n    \"featureFlightCancelContractCISLToggle\": true,\r\n    \"featureFlightContractCreationCISLToggle\": true,\r\n    \"featureFlightManagementCISLToggle\": true,\r\n    \"featureToggleAgeUpgrade\": true,\r\n    \"featureToggleAmendMedicalScreening\": true,\r\n    \"featureToggleAsychronousClaimsFeature\": true,\r\n    \"featureToggleCancelledUpgrades\": true,\r\n    \"featureToggleCislGetClaimDetails\": true,\r\n    \"featureToggleClaimsFNOLMigration\": true,\r\n    \"featureToggleClaimsNewStatuses\": true,\r\n    \"featureToggleContactUs\": true,\r\n    \"featureToggleDunningProcess\": true,\r\n    \"featureToggleEditMedicalScreening\": true,\r\n    \"featureToggleEntrustedCollection\": true,\r\n    \"featureToggleExpiringUpgradesAlert\": true,\r\n    \"featureToggleFetchContext\": true,\r\n    \"featureToggleGolfUpgrade\": true,\r\n    \"featureToggleLogEvents\": true,\r\n    \"featureToggleManualRenewalFriends\": true,\r\n    \"featureToggleNewUpgradeCard\": true,\r\n    \"featureTogglePersistentBasket\": true,\r\n    \"featureToggleProrata\": true,\r\n    \"featureToggleRelease6v2\": true,\r\n    \"featureToggleRelease6v3\": true,\r\n    \"featureToggleRelease6v4\": true,\r\n    \"featureToggleRelease6v5\": true,\r\n    \"featureToggleRelease6v6\": true,\r\n    \"featureToggleRelease6v7\": true,\r\n    \"featureToggleRelease7v0\": false,\r\n    \"featureToggleReleaseIdot2\": true,\r\n    \"featureToggleSMSLogin\": true,\r\n    \"featureToggleSportsAndActivitiesPdp\": true,\r\n    \"featureToggleUpgradedPortal\": true,\r\n    \"featureToggleWhatIsCovered\": true,\r\n    \"featureToggleWhatIsCoveredAreaOfCover\": true,\r\n    \"featureToggleWhatIsCoveredSportsAndActivities\": true,\r\n    \"forgottenPasswordRedirectUrl\": \"https://oneportal.uat.aws.emagin.eu/#/login\",\r\n    \"logEventBusinessPartnerCode\": \"LBG\",\r\n    \"mainDomain\": \";domain=.uat.aws.emagin.eu\",\r\n    \"medicalScoreLabelToggle\": true,\r\n    \"nwbDataDomainScript\": \"acaedccc-557f-4496-8a51-90f3de6ba22c-test\",\r\n    \"nwbDomainUrl\": \"https://clara-natwest.uat.aws.emagin.eu\",\r\n    \"phoneNumberRegularExpression\":\"^(\\+447\\d{9,9})\",\r\n    \"rbsDataDomainScript\": \"e75f50f7-d8f8-4699-abfb-df934d23bdf5-test\",\r\n    \"rbsDomainUrl\": \"https://clara-rbs.uat.aws.emagin.eu\",\r\n    \"refreshCookieTimeoutInterval\": 1740000,\r\n    \"soapToCislMigrationToggle\": true,\r\n    \"ubnDataDomainScript\": \"34545ffc-ed3c-432d-8405-c0b801ba807f-test\",\r\n    \"ubnDomainUrl\": \"https://clara-ulsterbank.uat.aws.emagin.eu\",\r\n    \"validDocumentSize\": 3145728,\r\n    \"validDocumentType\": \".doc, .docx, .xls, .xlsx, .pdf, .rtf, .txt, .zip, .xml, .jpeg, .jpg, .tif, .bmp, .png, .hcp\",\r\n    \"veriskClasses\": \"3,6\",\r\n    \"veriskGatewayURL\": \"https://gatewayuat.verisk.com/rating/uk/travel/\",\r\n    \"veriskScriptURL\": \"https://blackbox30-traveluat.verisk.co.uk/Scripts/blackbox-3.0.15-idempotent-babel-polyfill.js\",\r\n    \"veriskUsername\": \"BB3AllianzClaraUKTravelUAT\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://localhost:9001/endpoints",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "9001",
-					"path": [
-						"endpoints"
+						"xyz",
+						"abc",
+						"agentLogin"
 					]
 				}
 			},
