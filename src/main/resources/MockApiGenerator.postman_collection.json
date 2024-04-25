@@ -45,7 +45,7 @@
 			"response": []
 		},
 		{
-			"name": "Test Endpoint",
+			"name": "Refresh Folder Copy",
 			"request": {
 				"method": "POST",
 				"header": [],
