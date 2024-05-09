@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -52,7 +53,8 @@ public class MockController {
 	}
 
 	@PostMapping("/clara-bff/**")
-	public ResponseEntity<Object> handleRequest(HttpServletRequest request, @RequestBody String payload) {
+	@PutMapping("/clara-bff/**")
+	public ResponseEntity<Object> handlePostRequest(HttpServletRequest request, @RequestBody String payload) {
 		String requestURI = request.getRequestURI();
 		int queryStringIndex = requestURI.indexOf("?");
 		if (queryStringIndex != -1) {
@@ -75,8 +77,42 @@ public class MockController {
 		ObjectMapper objectMapper = new ObjectMapper();
 		try {
 			Object json = objectMapper.readValue(matchedEndpoint.getResponse(), Object.class);
+			System.out.println("Http Status code: " + matchedEndpoint.getStatus().toString());
 			System.out.println("Successfully responded for endpoint requested path: /" + path);
-			return ResponseEntity.ok(json);
+			return ResponseEntity.status(matchedEndpoint.getStatus()).body(json);
+		} catch (JsonProcessingException e) {
+			e.printStackTrace();
+		}
+		return ResponseEntity.status(HttpStatus.CONFLICT).body("Problem with response");
+	}
+
+	@GetMapping("/clara-bff/**")
+	public ResponseEntity<Object> handleGetRequest(HttpServletRequest request) {
+		String requestURI = request.getRequestURI();
+		int queryStringIndex = requestURI.indexOf("?");
+		if (queryStringIndex != -1) {
+			requestURI = requestURI.substring(0, queryStringIndex);
+		}
+		String[] pathSegments = request.getRequestURI().split("/");
+		String path = pathSegments[pathSegments.length - 1];
+		System.out.println("Endpoint requested path: /" + path);
+		Endpoints matchedEndpoint = null;
+		List<Endpoints> fetchedEndpoints = endpointFileManager.getEndpoint();
+		for (Endpoints endpoint : fetchedEndpoints) {
+			if (endpoint.getPath().equals(path)) {
+				matchedEndpoint = endpoint;
+				break;
+			}
+		}
+		if (matchedEndpoint == null) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Endpoint not configured");
+		}
+		ObjectMapper objectMapper = new ObjectMapper();
+		try {
+			Object json = objectMapper.readValue(matchedEndpoint.getResponse(), Object.class);
+			System.out.println("Http Status code: " + matchedEndpoint.getStatus().toString());
+			System.out.println("Successfully responded for endpoint requested path: /" + path);
+			return ResponseEntity.status(matchedEndpoint.getStatus()).body(json);
 		} catch (JsonProcessingException e) {
 			e.printStackTrace();
 		}

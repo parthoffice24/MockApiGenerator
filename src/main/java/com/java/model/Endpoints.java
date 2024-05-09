@@ -1,5 +1,7 @@
 package com.java.model;
 
+import org.springframework.http.HttpStatus;
+
 import lombok.Data;
 
 /**
@@ -10,5 +12,6 @@ public class Endpoints {
 	
 	private String path;
 	private String payload;
+	private HttpStatus status;
 	private String response;
 }
